@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SignIn SignOut App</title>
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="../static/js/signIn.js"></script>
+  </head>
+ 
+  <body>
+ 
+    <div class="container">
+      <div class="header">
+        <nav>
+        <ul>
+            <li role="presentation" ><a href="/">Home</a></li>
+            <li role="presentation" ><a href="/showSignUp">Sign Up</a></li>
+        </ul>
+        </nav>
+      </div>
+ 
+      <div class="jumbotron">
+        <form action="/signIn" method="post">
+            
+            <label for="inputEmail">Email address</label>
+            <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            
+            <label for="inputPassword">Password</label>
+            <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+            
+            <button id="btnSignIn" type="submit">Sign in</button>
+      </form>
+      </div>
+    </div>
+  </body>
+</html>
