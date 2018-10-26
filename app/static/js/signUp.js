@@ -4,7 +4,7 @@ $(function(){
 		$.ajax({
 			url: '/signUp',
 			data: $('form').serialize(),
-			type: 'GET',
+			type: 'POST',
 			success: function(response){
 				console.log(response);
 			},

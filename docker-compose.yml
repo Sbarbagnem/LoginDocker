@@ -1,18 +1,24 @@
-web:
-  build: .
-  command: python /code/app/app.py
-  ports:
-   - "8082:8082"
-  volumes:
-   - .:/code
-  links:
-   - db
-  hostname: myappserver
-db:
-  hostname: mysqlserver
-  image: orchardup/mysql
-  ports:
-   - "3306:3306"
-  environment:
-     MYSQL_ROOT_PASSWORD: root
-     MYSQL_DATABASE: AppDB
+version: '2'
+services:
+
+  web:
+    build: app/.
+    ports:
+      - "8082:8082"
+    volumes:
+     - .:/code
+    links:
+      - db
+    depends_on:
+      - db
+
+  db:
+    build: db/.
+    hostname: mysqlserver
+    volumes:
+      - /var/lib/mysql
+    environment:
+       MYSQL_ROOT_PASSWORD: root
+       MYSQL_USER: 1
+       MYSQL_PASSWORD: 1
+       MYSQL_DATABASE: AppDB
