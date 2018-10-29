@@ -16,8 +16,7 @@ pages:
   - docker:17.06.0-ce-dind
  script:
   # Install Docker Compose
-  - apk add --update py-pip &&
-    pip install docker-compose
+  - pip install docker-compose
   - docker-compose --build
 
 build:
