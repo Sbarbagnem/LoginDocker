@@ -10,8 +10,8 @@ stages:
   - deploy
   
 build:
-  - echo "sono nella fase di build"
   script:
+     - echo "sono nella fase di build"
      - docker-compose up    
      only :
        changes:
