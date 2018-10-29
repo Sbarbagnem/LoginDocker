@@ -1,3 +1,1 @@
-import pytest
-
-print pytest --version
+print 'Sono in test.py'
