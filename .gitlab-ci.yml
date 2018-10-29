@@ -14,6 +14,8 @@ pages:
  image: docker:17.06.0-ce
  services:
   - docker:17.06.0-ce-dind
+ before_script:
+  - pip install -r requirements.txt
  script:
   # Install Docker Compose
   - pip install docker-compose
