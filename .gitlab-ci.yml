@@ -9,21 +9,6 @@ stages:
 - test
 - deploy
 
-pages:
- stage: build
- image: docker:17.06.0-ce
- services:
-  - docker:17.06.0-ce-dind
- before_script:
-  - apt-get install python-pip python-dev build-essential
-  - pip install --upgrade pip
-  - pip install --upgrade virtualenv
-  - pip install -r requirements.txt
- script:
-  # Install Docker Compose
-  - pip install docker-compose
-  - docker-compose --build
-
 build:
  script:
  - echo "sono nella fase di build"
