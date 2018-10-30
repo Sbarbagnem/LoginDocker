@@ -1,4 +1,4 @@
-image: docker:stable
+image: gitlab/dind
 
 before_script:
 - pip install -r requirements.txt
