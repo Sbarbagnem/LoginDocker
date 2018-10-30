@@ -15,7 +15,7 @@ build:
  script:
  - echo "sono nella fase di build"
  #- docker info
- #- docker-compose up    
+ - docker-compose up    
  #only :
   #changes:
   #- Dockerfile
