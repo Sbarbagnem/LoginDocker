@@ -20,7 +20,10 @@ stages:
 build:
  script:
  - echo "sono nella fase di build"
- - docker build -f /prosvil1/db/Dockerfile
+ - cd db
+ - docker build -t db .
+ - cd ../app
+ - docker build -t app .
  #- docker run -d -P --name app --link db #immagine python app.py
  #- docker-compose build
  #- docker-compose up
