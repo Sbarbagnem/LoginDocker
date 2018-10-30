@@ -4,7 +4,7 @@ services:
   - docker:dind
   
 before_script:
-- apk add --update python py-pip python-dev && pip install docker-compose 
+- apk add --update python py-pip python-dev && pip install docker-compose && pip install --upgrade pip
 - pip install -r app/requirements.txt
 - docker version
 - docker-compose version
