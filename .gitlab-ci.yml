@@ -5,6 +5,7 @@ services:
   
 before_script:
 - apk add --update python py-pip python-dev && pip install docker-compose 
+- pip install -r requirements.txt
 - docker version
 - docker-compose version
 
@@ -13,17 +14,17 @@ variables:
  MYSQL_ROOT_PASSWORD: root
     
 stages:
-- build
+#- build
 - test
 - deploy
 
-build:
- script:
- - echo "sono nella fase di build"
+#build:
+ #script:
+ #- echo "sono nella fase di build"
  #- docker run -d --name db #immagine
  #- docker run -d -P --name app --link db #immagine python app.py
  #- docker-compose build
- - docker-compose up
+ #- docker-compose up
  #only :
   #changes:
   #- Dockerfile
@@ -31,9 +32,9 @@ build:
   #- docker-compose
   #- requirements
 
-#test:
- #script:
- #- echo "sono nella fase di test"
+test:
+ script:
+ - echo "sono nella fase di test"
  ##- python -m pytest tests/test.py
  #- python tests/test.py
      
