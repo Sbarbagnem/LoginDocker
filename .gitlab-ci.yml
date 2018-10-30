@@ -26,7 +26,7 @@ build:
  - docker build -t app .
  - docker image ls
  - docker ps
- - docker run db -e MYSQL_ROOT_PASSWORD=root
+ - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
  #- docker run -d -P --name app --link db python app.py
  #- docker-compose build
  #- docker-compose up
