@@ -8,14 +8,12 @@ before_script:
 - docker version
 - docker-compose version
 
-variables:
- MYSQL_DATABASE: AppDB
- MYSQL_ROOT_PASSWORD: root
+#variables:
+ #MYSQL_DATABASE: AppDB
+ #MYSQL_ROOT_PASSWORD: root
     
 stages:
-#- build
-- test
-- deploy
+- build
 
 build:
  script:
@@ -28,10 +26,8 @@ build:
  - docker ps
  - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
  - docker ps
- - docker run --name app_service --link db_service -d app
- - docker ps
- #- docker-compose build
- #- docker-compose up
+ - docker run --name app_service --link db_service -d app python app.py
+
  #only :
   #changes:
   #- Dockerfile
@@ -39,15 +35,6 @@ build:
   #- docker-compose
   #- requirements
 
-test:
- script:
- - echo "sono nella fase di test"
- ##- python -m pytest tests/test.py
- #- python tests/test.py
-     
-#deploy:
- #script:
- #- echo "sono nella fase di deploy"
 
      
      
