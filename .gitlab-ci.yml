@@ -16,7 +16,8 @@ stages:
 build:
  script:
  - echo "sono nella fase di build"
- - docker-compose up 
+ - docker run --name db db/
+ - docker run -d -P --name app --link db app/ python app.py
  #only :
   #changes:
   #- Dockerfile
