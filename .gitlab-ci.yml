@@ -5,7 +5,6 @@ services:
   
 before_script:
 - apk add --update python py-pip python-dev && pip install docker-compose && pip install --upgrade pip
-- pip install -r app/requirements.txt
 - docker version
 - docker-compose version
 
@@ -18,10 +17,10 @@ stages:
 - test
 - deploy
 
-#build:
- #script:
- #- echo "sono nella fase di build"
- #- docker run -d --name db #immagine
+build:
+ script:
+ - echo "sono nella fase di build"
+ - docker build -f --name db /prosvil1/db/Dockerfile
  #- docker run -d -P --name app --link db #immagine python app.py
  #- docker-compose build
  #- docker-compose up
