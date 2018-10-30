@@ -17,12 +17,12 @@ build:
  script:
  - echo "sono nella fase di build"
  - docker-compose up 
- only :
-  changes:
-  - Dockerfile
-  - app/Dockerfile
-  - docker-compose
-  - requirements
+ #only :
+  #changes:
+  #- Dockerfile
+  #- app/Dockerfile
+  #- docker-compose
+  #- requirements
 
 #test:
  #script:
