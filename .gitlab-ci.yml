@@ -2,9 +2,11 @@ image: docker:stable
 
 services:
   - docker:dind
-
+  
 before_script:
-- docker info
+- apk add --update python py-pip python-dev && pip install docker-compose 
+- docker version
+- docker-compose version
     
 stages:
 - build
@@ -14,24 +16,23 @@ stages:
 build:
  script:
  - echo "sono nella fase di build"
- #- docker info
- - docker-compose up    
- #only :
-  #changes:
-  #- Dockerfile
-  #- app/Dockerfile
-  #- docker-compose
-  #- requirements
+ - docker-compose up 
+ only :
+  changes:
+  - Dockerfile
+  - app/Dockerfile
+  - docker-compose
+  - requirements
 
-test:
- script:
- - echo "sono nella fase di test"
- #- python -m pytest tests/test.py
- - python tests/test.py
+#test:
+ #script:
+ #- echo "sono nella fase di test"
+ ##- python -m pytest tests/test.py
+ #- python tests/test.py
      
-deploy:
- script:
- - echo "sono nella fase di deploy"
+#deploy:
+ #script:
+ #- echo "sono nella fase di deploy"
 
      
      
