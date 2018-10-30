@@ -4,7 +4,7 @@ services:
   - docker:dind
 
 before_script:
-- pip install -r requirements.txt
+- docker info
     
 stages:
 - build
@@ -14,7 +14,7 @@ stages:
 build:
  script:
  - echo "sono nella fase di build"
- - docker info
+ #- docker info
  #- docker-compose up    
  #only :
   #changes:
