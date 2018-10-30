@@ -7,6 +7,10 @@ before_script:
 - apk add --update python py-pip python-dev && pip install docker-compose 
 - docker version
 - docker-compose version
+
+variables:
+ MYSQL_DATABASE: AppDB
+ MYSQL_ROOT_PASSWORD: root
     
 stages:
 - build
@@ -16,8 +20,9 @@ stages:
 build:
  script:
  - echo "sono nella fase di build"
- - docker run --name db db/
- - docker run -d -P --name app --link db app/ python app.py
+ #- docker run -d --name db #immagine
+ #- docker run -d -P --name app --link db #immagine python app.py
+ - docker-compose up
  #only :
   #changes:
   #- Dockerfile
