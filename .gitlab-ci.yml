@@ -22,7 +22,7 @@ build:
  - echo "sono nella fase di build"
  #- docker run -d --name db #immagine
  #- docker run -d -P --name app --link db #immagine python app.py
- - docker-compose up
+ - docker-compose build
  #only :
   #changes:
   #- Dockerfile
