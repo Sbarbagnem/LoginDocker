@@ -8,6 +8,10 @@ before_script:
 - docker version
 - docker-compose version
 
+stages:
+- build
+- test
+
 build:
  script:
  - echo "sono nella fase di build"
@@ -28,6 +32,7 @@ build:
   - app/requirements.txt
   
 test:
+ script:
  - echo "sono nella fase di test"
   
   
