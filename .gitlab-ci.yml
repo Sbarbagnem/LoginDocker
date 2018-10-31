@@ -41,4 +41,4 @@ test:
  - docker run --name app_service --link db_service -d app python app.py
  - docker cp test.py app_service:test
  - docker ps
- - docker exec app_service ./test.py
+ - docker exec app_service -d python test.py
