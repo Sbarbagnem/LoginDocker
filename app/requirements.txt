@@ -6,4 +6,4 @@ Flask-WTF
 Flask-Script
 Flask-Migrate
 simplejson
--U pytest
+pytest
