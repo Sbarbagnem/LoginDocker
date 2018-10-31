@@ -5,6 +5,7 @@ from model import db
 from model import User
 from model import app 
 
+
 db.init_app(app)
 
 db.create_all()
