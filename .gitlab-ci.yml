@@ -8,14 +8,6 @@ before_script:
 - docker version
 - docker-compose version
 
-#variables:
- #MYSQL_DATABASE: AppDB
- #MYSQL_ROOT_PASSWORD: root
-    
-stages:
-- build
-- test
-
 build:
  script:
  - echo "sono nella fase di build"
