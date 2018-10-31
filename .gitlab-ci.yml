@@ -32,13 +32,10 @@ build:
 test:
  script:
  - echo "sono nella fase di test"
- - cd db
- - docker build -t db .
- - cd ../app
- - docker build -t app .
- - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
- - pip install pytest
- - pytest
+ - cd app
+ - docker build . -t app_container
+ - pip install --user conu
+ - python test_container.py
   
 
 
