@@ -18,3 +18,4 @@ def client():
     os.unlink(app.config['DATABASE'])
 
 client()
+print 'ddddddddddddddddddd'
