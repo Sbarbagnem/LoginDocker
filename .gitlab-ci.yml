@@ -34,9 +34,10 @@ test:
  - echo "sono nella fase di test"
  - cd db
  - docker build -t db .
- - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
  - cd ../app
- - -m pytest
+ - docker build -t app .
+ - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
+ - pytest
   
 
 
