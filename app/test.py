@@ -24,4 +24,4 @@ def test_empty_db(client):
     assert b'No entries here so far' in rv.data
 
 
-IUDBVU  DBVDPUIVBWDPVBWEVPUBWE  UWIB
+jvbsèudfbèuhb
