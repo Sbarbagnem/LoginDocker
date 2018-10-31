@@ -12,8 +12,9 @@ before_script:
  #MYSQL_DATABASE: AppDB
  #MYSQL_ROOT_PASSWORD: root
     
-#stages:
-#- build
+stages:
+- build
+- test
 
 build:
  script:
@@ -22,18 +23,19 @@ build:
  - docker build -t db .
  - cd ../app
  - docker build -t app .
- - docker image ls
- - docker ps
+ #- docker image ls
+ #- docker ps
  - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
  - docker ps
  - docker run --name app_service --link db_service -d app python app.py
-
- #only :
-  #changes:
-  #- Dockerfile
-  #- app/Dockerfile
-  #- docker-compose
-  #- requirements
+ only :
+  changes:
+  - Dockerfile
+  - app/Dockerfile
+  - docker-compose
+  - app/requirements.txt
+  
+  
 
 
      
