@@ -39,6 +39,6 @@ test:
  - docker build -t app .
  - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
  - docker run --name app_service --link db_service -d app python app.py
- - docker cp test.py app_service
+ - docker cp test.py app_service:test
  - docker exec app_service ./test.py
  - docker ps
