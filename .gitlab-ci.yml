@@ -38,5 +38,5 @@ test:
  - cd ../app
  - docker build -t app .
  - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
- - docker run --name app_service --link db_service -p 127.0.0.3:8082 -d app python app.py
+ - docker run --name app_service -p 127.0.0.3:8082 --link db_service -d app python app.py
  - docker ps 
