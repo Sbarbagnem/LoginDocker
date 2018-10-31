@@ -12,6 +12,7 @@ stages:
 - build
 - test
 
+# test if build is correctly after change file of docker setting
 build:
  script:
  - echo "sono nella fase di build"
@@ -32,12 +33,9 @@ build:
 test:
  script:
  - echo "sono nella fase di test"
- - cd app
- - docker build . -t app_container
- - pip install --user conu
- - python test_container.py
-  
-
-
-     
-     
+ - cd db
+ - docker build -t db .
+ - cd ../app
+ - docker build -t app .
+ - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
+ - docker exec -d app  
