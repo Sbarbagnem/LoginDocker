@@ -35,6 +35,9 @@ build:
   - docker-compose
   - app/requirements.txt
   
+test:
+ - echo "sono nella fase di test"
+  
   
 
 
