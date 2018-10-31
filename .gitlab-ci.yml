@@ -38,4 +38,4 @@ test:
  - cd ../app
  - docker build -t app .
  - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
- - docker exec -d app  
+ - docker exec app --link db_service -d
