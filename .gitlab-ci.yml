@@ -37,7 +37,8 @@ test:
  - cd ../app
  - docker build -t app .
  - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
- - pytest
+ - pip install pytest
+ - python pytest
   
 
 
