@@ -30,15 +30,15 @@ build:
   - docker-compose
   - app/requirements.txt
   
-test:
- script:
- - echo "sono nella fase di test"
- - cd db
- - docker build -t db .
- - cd ../app
- - docker build -t app .
- - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
- - docker run --name app_service --link db_service -d app python app.py
- - docker cp test.py app_service:test.py
- - docker exec app_service ./test.py
- - docker ps
+# test:
+#  script:
+#  - echo "sono nella fase di test"
+#  - cd db
+#  - docker build -t db .
+#  - cd ../app
+#  - docker build -t app .
+#  - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
+#  - docker run --name app_service --link db_service -d app python app.py
+#  - docker cp test.py app_service:test2.py
+#  - docker exec app_service ./test.py
+#  - docker ps
