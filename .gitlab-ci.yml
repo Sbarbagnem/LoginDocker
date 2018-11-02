@@ -39,4 +39,5 @@ test:
  - docker build -t app .
  - docker image ls
  - docker run -d --name db_service -e MYSQL_ROOT_PASSWORD=root db
- - docker exec --name app_service --link db_service -d app python test.py 
+ - docker run --name app_service --link db_service -d app python test.py 
+ - docker container ls
