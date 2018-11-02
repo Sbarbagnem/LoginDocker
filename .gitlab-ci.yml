@@ -33,10 +33,10 @@ build:
 test:
  script:
  - echo "sono nella fase di test"
-- cd db
-- docker build -t db .
-- cd ../app
-- docker build -t app .
-- docker image ls
-- docker run -d --name db_service -e MYSQL_ROOT_PASSWORD=root db
-- docker run --name app_service --link db_service -d app python app.py && python test.py 
+ - cd db
+ - docker build -t db .
+ - cd ../app
+ - docker build -t app .
+ - docker image ls
+ - docker run -d --name db_service -e MYSQL_ROOT_PASSWORD=root db
+ - docker run --name app_service --link db_service -d app python app.py && python test.py 
