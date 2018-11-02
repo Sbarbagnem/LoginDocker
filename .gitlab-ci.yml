@@ -42,4 +42,4 @@ test:
  - docker run --name app_service --link db_service -d app  
  - docker ps 
  - docker container start app_service
- - docker exec app_service python test.py
+ - docker exec app_service bash -l python test.py
