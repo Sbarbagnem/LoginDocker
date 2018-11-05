@@ -21,6 +21,7 @@ before_script:
 stages:
 - build
 - test
+- deploy
 
 build:
  stage: build
@@ -43,4 +44,11 @@ test:
 #  - docker build -t $RELEASE_IMAGE_APP .
 #  - docker push $RELEASE_IMAGE_DB
 #  - docker push $RELEASE_IMAGE_APP 
+ - docker-compose exec -T pytest ./tests/
  - echo "End testing"
+
+deploy:
+ stage: deploy
+ script:
+ - echo "Starting upload new image "
+ - echo "End uploading"
