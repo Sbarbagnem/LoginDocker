@@ -10,9 +10,9 @@ variables:
   RELEASE_IMAGE_DB: registry.gitlab.com/s.ventura/prosvil1/db:latest
   
 before_script:
-- apk add --update python py-pip python-dev && pip install docker-compose && pip install --upgrade pip
-- docker version
-- docker-compose version
+- apk add --update python py-pip python-dev 
+- pip install docker-compose 
+- pip install --upgrade pip
 - docker-compose build
 - docker-compose up -d
 #- docker login registry.gitlab.com --username s.ventura6@campus.unimib.it --password simbacane\12
