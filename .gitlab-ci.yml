@@ -44,7 +44,7 @@ test:
 #  - docker build -t $RELEASE_IMAGE_APP .
 #  - docker push $RELEASE_IMAGE_DB
 #  - docker push $RELEASE_IMAGE_APP 
- - docker-compose exec -T pytest ./tests/
+ - docker-compose exec -T prosvil1_web pytest ./tests/
  - echo "End testing"
 
 deploy:
