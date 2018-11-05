@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template, json, request, session, redirect, url_for, flash
-from model import db
+from web import app, db
 from model import User
-from model import app 
-
 
 db.init_app(app)
 
@@ -24,7 +22,7 @@ def showSignUp():
 def showSignIn():
     return render_template('signin.html')
 
-@app.route('/signUp', methods=['POST'])
+@app.route('/signUp', methods=['POST', 'GET'])
 def signUp():
 
     try:
@@ -38,14 +36,14 @@ def signUp():
 
         if sql is None: 
 
-            db.session.add(User(email=_email,password= _password, name=_name, surname=_surname, visit=1))
+            db.session.add(User(email=_email,password= _password, name=_name, surname=_surname, visit=0))
             db.session.commit()
 
-            return redirect(url_for('/'))
+            return render_template('index.html')
         
         else:
 
-            return render_template('error.html', error='mail già registrata')
+            return render_template('error.html', error='mail non disponibile')
         
     except Exception as e:
         
@@ -82,6 +80,4 @@ def signIn():
 def logout():
    session.pop('username', None)
    return redirect('/')
-  
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8082, debug=True)
+

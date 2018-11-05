@@ -2,42 +2,45 @@ image: docker:stable
 
 services:
   - docker:dind
+
+variables:
+  TEST_IMAGE_APP: registry.gitlab.com/s.ventura/prosvil1/web:test
+  TEST_IMAGE_DB: registry.gitlab.com/s.ventura/prosvil1/db:test
+  RELEASE_IMAGE_APP: registry.gitlab.com/s.ventura/prosvil1/web:latest
+  RELEASE_IMAGE_DB: registry.gitlab.com/s.ventura/prosvil1/db:latest
   
 before_script:
 - apk add --update python py-pip python-dev && pip install docker-compose && pip install --upgrade pip
 - docker version
 - docker-compose version
+- docker-compose build
+- docker-compose up -d
+- docker login registry.gitlab.com --username s.ventura6@campus.unimib.it --password simbacane\12
 
+# stage per indicare che i tre passaggi devono essere eseguiti in sequenza e tutti devono avere successo
 stages:
 - build
 - test
 
-# test if build is correctly after change file of docker setting
 build:
+ stage: build
  script:
- - echo "sono nella fase di build"
- - cd db
- - docker build -t db .
- - cd ../app
- - docker build -t app .
- - docker run --name db_service -e MYSQL_ROOT_PASSWORD=root -d db
- - docker ps
- - docker run --name app_service --link db_service -d app python app.py
- only :
-  changes:
-  - Dockerfile
-  - app/Dockerfile
-  - docker-compose
-  - app/requirements.txt
-  
+   - echo "Build successfull"
+#  - cd db
+#  - docker build -t $TEST_IMAGE_DB .
+#  - cd ../web
+#  - docker build -t $TEST_IMAGE_APP .
+#  - docker run -d --name db_service -e MYSQL_ROOT_PASSWORD=root MYSQL_DATABASE=AppDB TEST_IMAGE_DB
+#  - docker run --name app_service --link db_service -d TEST_IMAGE_APP  
+
 test:
+ stage: test
  script:
- - echo "sono nella fase di test"
- - cd db
- - docker build -t db .
- - cd ../app
- - docker build -t app .
- - docker image ls
- - docker run -d --name db_service -e MYSQL_ROOT_PASSWORD=root db
- - docker run --name app_service --link db_service -d app  
- - docker container ls
+ - echo "Start testing"
+#  - cd db
+#  - docker build -t $RELEASE_IMAGE_DB .
+#  - cd ../app
+#  - docker build -t $RELEASE_IMAGE_APP .
+#  - docker push $RELEASE_IMAGE_DB
+#  - docker push $RELEASE_IMAGE_APP 
+ - echo "End testing"
