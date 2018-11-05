@@ -15,7 +15,7 @@ before_script:
 - docker-compose version
 - docker-compose build
 - docker-compose up -d
-- docker login registry.gitlab.com --username s.ventura6@campus.unimib.it --password simbacane\12
+#- docker login registry.gitlab.com --username s.ventura6@campus.unimib.it --password simbacane\12
 
 # stage per indicare che i tre passaggi devono essere eseguiti in sequenza e tutti devono avere successo
 stages:
