@@ -2,21 +2,17 @@ image: docker:stable
 
 services:
   - docker:18.06-dind
-
-variables:
-  IMAGE_APP: registry.gitlab.com/s.ventura/prosvil1/web:latest
-  IMAGE_DB: registry.gitlab.com/s.ventura/prosvil1/db:latest
   
 before_script:
 - apk add --update python py-pip python-dev 
 - pip install docker-compose 
 - pip install --upgrade pip
-- docker-compose up --build -d
+- docker-compose build 
+- docker-compose run web
 
 stages:
 - build
 - test
-- deploy
 
 build:
  stage: build
@@ -30,10 +26,3 @@ test:
  - docker ps
  - docker-compose exec -T web python -m pytest -q /code/tests/test_templates.py 
  - echo "End testing"
-
-deploy:
- stage: deploy
- script:
- - echo "Starting upload new image "
- - docker login registry.gitlab.com --username s.ventura6@campus.unimib.it --password simbacane\12
- - echo "End uploading"
