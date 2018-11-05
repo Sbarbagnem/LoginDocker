@@ -31,7 +31,7 @@ test:
  script:
  - echo "Start testing"
  - docker ps
- - docker-compose exec -T web pytest -q /code/tests/test_templates.py 
+ - docker-compose exec -T prosvil1_web pytest -q /code/tests/test_templates.py 
  - echo "End testing"
 
 deploy:
