@@ -11,7 +11,7 @@ before_script:
 - apk add --update python py-pip python-dev 
 - pip install docker-compose 
 - pip install --upgrade pip
-- docker-compose build
+#- docker-compose build
 - docker-compose up 
 #- docker login registry.gitlab.com --username s.ventura6@campus.unimib.it --password simbacane\12
 
