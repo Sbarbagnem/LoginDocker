@@ -7,8 +7,7 @@ before_script:
 - apk add --update python py-pip python-dev 
 - pip install docker-compose 
 - pip install --upgrade pip
-- docker-compose build 
-- docker-compose run web
+- docker-compose up --build -d
 
 stages:
 - build
