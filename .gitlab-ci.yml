@@ -44,7 +44,8 @@ test:
 #  - docker build -t $RELEASE_IMAGE_APP .
 #  - docker push $RELEASE_IMAGE_DB
 #  - docker push $RELEASE_IMAGE_APP 
- - docker-compose exec -T web pytest ./tests/
+ - docker ps
+ - docker-compose exec -T web pytest -q ./test/test_templates.py
  - echo "End testing"
 
 deploy:
