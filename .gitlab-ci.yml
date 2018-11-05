@@ -1,7 +1,7 @@
 image: docker:stable
 
 services:
-  - docker:dind
+  - docker:18.06-dind
 
 variables:
   TEST_IMAGE_APP: registry.gitlab.com/s.ventura/prosvil1/web:test
@@ -44,7 +44,7 @@ test:
 #  - docker build -t $RELEASE_IMAGE_APP .
 #  - docker push $RELEASE_IMAGE_DB
 #  - docker push $RELEASE_IMAGE_APP 
- - docker-compose exec -T prosvil1_web pytest ./tests/
+ - docker-compose exec -T web pytest ./tests/
  - echo "End testing"
 
 deploy:
