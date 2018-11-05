@@ -11,8 +11,7 @@ before_script:
 - apk add --update python py-pip python-dev 
 - pip install docker-compose 
 - pip install --upgrade pip
-- docker-compose build
-- docker-compose up -d
+- docker-compose up --build -d
 #- docker login registry.gitlab.com --username s.ventura6@campus.unimib.it --password simbacane\12
 
 # stage per indicare che i tre passaggi devono essere eseguiti in sequenza e tutti devono avere successo
@@ -31,7 +30,7 @@ test:
  script:
  - echo "Start testing"
  - docker ps
- - docker-compose exec -T prosvil1_web pytest -q /code/tests/test_templates.py 
+ - docker-compose exec -T web pytest -q /code/tests/test_templates.py 
  - echo "End testing"
 
 deploy:
