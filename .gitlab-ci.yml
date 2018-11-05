@@ -4,10 +4,8 @@ services:
   - docker:18.06-dind
 
 variables:
-  TEST_IMAGE_APP: registry.gitlab.com/s.ventura/prosvil1/web:test
-  TEST_IMAGE_DB: registry.gitlab.com/s.ventura/prosvil1/db:test
-  RELEASE_IMAGE_APP: registry.gitlab.com/s.ventura/prosvil1/web:latest
-  RELEASE_IMAGE_DB: registry.gitlab.com/s.ventura/prosvil1/db:latest
+  IMAGE_APP: registry.gitlab.com/s.ventura/prosvil1/web:latest
+  IMAGE_DB: registry.gitlab.com/s.ventura/prosvil1/db:latest
   
 before_script:
 - apk add --update python py-pip python-dev 
@@ -27,25 +25,12 @@ build:
  stage: build
  script:
    - echo "Build successfull"
-#  - cd db
-#  - docker build -t $TEST_IMAGE_DB .
-#  - cd ../web
-#  - docker build -t $TEST_IMAGE_APP .
-#  - docker run -d --name db_service -e MYSQL_ROOT_PASSWORD=root MYSQL_DATABASE=AppDB TEST_IMAGE_DB
-#  - docker run --name app_service --link db_service -d TEST_IMAGE_APP  
 
 test:
  stage: test
  script:
  - echo "Start testing"
-#  - cd db
-#  - docker build -t $RELEASE_IMAGE_DB .
-#  - cd ../app
-#  - docker build -t $RELEASE_IMAGE_APP .
-#  - docker push $RELEASE_IMAGE_DB
-#  - docker push $RELEASE_IMAGE_APP 
- - docker ps
- - docker-compose exec -T web pytest -q ./test/test_templates.py
+ - docker-compose exec -T web pytest -q /code/tests/test_templates.py
  - echo "End testing"
 
 deploy:

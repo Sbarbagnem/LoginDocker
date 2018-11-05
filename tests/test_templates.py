@@ -1,4 +1,4 @@
-from conftest import client, runner
+from conftest import client
 
 def test_index(client):
     response = client.get("/")
@@ -14,12 +14,4 @@ def test_showSignIn(client):
 
 def test_signUp(client):
     response = client.get('/signUp')
-    assert response.status_code == 200
-
-def test_signIn(client):
-    response = client.get('/signIn')
-    assert response.status_code == 200
-
-def test_signOut(client):
-    response = client.get('/signOut')
     assert response.status_code == 200
